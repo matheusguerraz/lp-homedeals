@@ -1,18 +1,14 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "node:path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export default defineConfig({
-  // Keeps the build portable (works when published in a subfolder).
-  base: './',
+export default defineConfig(({ command }) => ({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
   },
-});
+  // dev: '/', build no GitHub Pages: '/lp-homedeals/'
+  base: command === "build" ? "/lp-homedeals/" : "/",
+}));
