@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import logo from "@/assets/logo-homedeals.png";
 import background from "@/assets/background.png";
+import whatsapp from "@/assets/whatsapp.webp";
 import { Sparkles } from 'lucide-react'; // MessageCircle is no longer needed directly for the button
 
 const Hero = () => {
@@ -72,7 +73,7 @@ const Hero = () => {
             >
               <a href="https://sndflw.com/i/homedeals" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <img 
-                  src="https://horizons-cdn.hostinger.com/0fbacde2-7cdd-4588-b944-8c8e401192b9/01b8d8b8370fe70ecf72e23d98a94399.webp" 
+                  src={whatsapp}
                   alt="WhatsApp icon" 
                   className="w-6 h-6" 
                 /> {/* Replaced Lucide icon with WhatsApp logo image */}
@@ -89,13 +90,13 @@ const Hero = () => {
           >
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 bg-stone-900/50 rounded-full flex items-center justify-center border border-white/10">
-                <span className="text-lg font-bold text-white">5k+</span>
+                <span className="text-lg font-bold text-white">+5k</span>
               </div>
               <span className="text-sm">Membros Ativos</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 bg-stone-900/50 rounded-full flex items-center justify-center border border-white/10">
-                <span className="text-lg font-bold text-white">40+</span>
+                <span className="text-lg font-bold text-white">+40</span>
               </div>
               <span className="text-sm">Ofertas Diárias</span>
             </div>
