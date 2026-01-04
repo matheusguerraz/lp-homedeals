@@ -1,115 +1,171 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-homedeals.png";
 import background from "@/assets/background.png";
 import whatsapp from "@/assets/whatsapp.webp";
-import { Sparkles } from 'lucide-react'; // MessageCircle is no longer needed directly for the button
+import phoneMockup from "@/assets/phone-mockup.png";
+import { Sparkles } from "lucide-react";
+
+const WHATSAPP_LINK = "https://sndflw.com/i/homedeals";
+
+const pulseTransition = {
+  duration: 1.1,
+  repeat: Infinity,
+  repeatType: "loop",
+  ease: "easeInOut",
+};
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+    <section className="relative w-full overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <img
           src={background}
-          className="w-full h-full object-cover"
+          alt=""
+          className="w-full h-full object-cover object-center"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/35 to-black/60" />
       </div>
 
-      {/* Top Right Logo Image */}
-      <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
-        <img 
-          src={logo}
-          alt="Home Deals Logo" 
-          className="h-10 w-auto" 
-        />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full">
-        <div className="max-w-3xl mx-auto text-center md:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-6 flex justify-center md:justify-start"
-          >
-            <div className="inline-flex items-center gap-2 bg-stone-800/40 border border-stone-600/30 rounded-full px-4 py-2 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-stone-300" />
-              <span className="text-stone-100 text-sm font-medium">Ofertas Diárias Exclusivas</span>
+      {/* Conteúdo */}
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 pb-10 min-h-[100svh] flex items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Coluna texto */}
+          <div className="text-center lg:text-left">
+            {/* Logo dentro do fluxo */}
+            <div className="flex justify-center lg:justify-start mb-6">
+              <img
+                src={logo}
+                alt="Home Deals Logo"
+                className="w-28 sm:w-32 h-auto"
+                loading="eager"
+                decoding="async"
+              />
             </div>
-          </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-          >
-            Transforme Sua Casa com{' '}
-            <span className="text-[#D2691E]">Ofertas Imbatíveis</span> {/* Changed color to a brown/orange tone */}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-lg sm:text-xl text-stone-200 mb-8 leading-relaxed max-w-2xl mx-auto md:mx-0"
-          >
-            Junte-se à nossa comunidade exclusiva no WhatsApp e tenha acesso instantâneo a ofertas diárias em eletrodomésticos, móveis e muito mais.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-          >
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#25D366] hover:bg-[#1DA851] text-white font-semibold text-lg px-8 py-6 rounded-full shadow-2xl shadow-[#25D366]/50 transition-all duration-300 hover:scale-105"
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+              className="mb-5 flex justify-center lg:justify-start"
             >
-              <a href="https://sndflw.com/i/homedeals" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                <img 
-                  src={whatsapp}
-                  alt="WhatsApp icon" 
-                  className="w-6 h-6" 
-                /> {/* Replaced Lucide icon with WhatsApp logo image */}
-                Entrar no Grupo WhatsApp
-              </a>
-            </Button>
-          </motion.div>
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 text-white/90" />
+                <span className="text-white text-sm font-medium">
+                  Ofertas Diárias Exclusivas
+                </span>
+              </div>
+            </motion.div>
 
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
+              className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 leading-tight"
+            >
+              Transforme Sua Casa com{" "}
+              <span className="text-[#D2691E]">Ofertas Imbatíveis</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
+              className="text-base sm:text-lg text-white/90 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0"
+            >
+              Entre no grupo do WhatsApp e receba ofertas diárias em
+              eletrodomésticos, móveis e muito mais — direto no seu celular.
+            </motion.p>
+
+            {/* CTA INLINE (agora aparece no MOBILE e no DESKTOP) */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="flex justify-center lg:justify-start"
+            >
+              <motion.div
+                animate={{
+                  scale: [1, 1.04, 1],
+                  filter: [
+                    "drop-shadow(0px 0px 0px rgba(37,211,102,0))",
+                    "drop-shadow(0px 0px 14px rgba(37,211,102,0.75))",
+                    "drop-shadow(0px 0px 0px rgba(37,211,102,0))",
+                  ],
+                }}
+                transition={pulseTransition}
+                className="w-full sm:w-auto"
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full sm:w-auto bg-[#25D366] hover:bg-[#1DA851] text-white font-semibold text-lg px-8 py-6 rounded-full shadow-2xl shadow-[#25D366]/40 transition-transform duration-200 hover:scale-[1.02]"
+                >
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <img
+                      src={whatsapp}
+                      alt=""
+                      className="w-6 h-6"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    Entrar no Grupo do WhatsApp
+                  </a>
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Prova social compacta (fica abaixo do botão) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-6 flex items-center justify-center lg:justify-start gap-4 text-white/90"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center border border-white/15">
+                  <span className="text-sm font-bold">+5k</span>
+                </div>
+                <span className="text-xs sm:text-sm">Membros</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center border border-white/15">
+                  <span className="text-sm font-bold">+40</span>
+                </div>
+                <span className="text-xs sm:text-sm">Ofertas/dia</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Coluna mockup: somente desktop (se você estiver mantendo) */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex items-center justify-center md:justify-start gap-6 mt-8 text-white/80"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: "easeOut", delay: 0.1 }}
+            className="hidden lg:flex justify-end"
           >
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-stone-900/50 rounded-full flex items-center justify-center border border-white/10">
-                <span className="text-lg font-bold text-white">+5k</span>
-              </div>
-              <span className="text-sm">Membros Ativos</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-stone-900/50 rounded-full flex items-center justify-center border border-white/10">
-                <span className="text-lg font-bold text-white">+40</span>
-              </div>
-              <span className="text-sm">Ofertas Diárias</span>
-            </div>
+            <img
+              src={phoneMockup}
+              alt="Prévia do grupo Home Deals"
+              className="w-[420px] h-auto drop-shadow-2xl"
+              loading="lazy"
+              decoding="async"
+            />
           </motion.div>
-        </div>
-        
-        {/* Absolute Footer for copyright/credits to keep layout single-screen but professional */}
-        <div className="absolute bottom-4 left-0 right-0 text-center z-20">
-             <p className="text-stone-400 text-xs">
-            © 2026 Home Deals. Todos os direitos reservados.
-          </p>
         </div>
       </div>
+
+      {/* REMOVIDO: CTA fixo no mobile (footer) */}
     </section>
   );
 };
