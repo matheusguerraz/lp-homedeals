@@ -32,7 +32,8 @@ const Hero = () => {
       </div>
 
       {/* Conteúdo */}
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 pb-10 min-h-[100svh] flex items-center">
+      <div className="relative z-10 mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-6 pt-10 pb-10 min-h-[100svh] flex items-center">
+
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Coluna texto */}
           <div className="text-center lg:text-left">
