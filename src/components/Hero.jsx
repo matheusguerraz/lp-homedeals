@@ -2,7 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-homedeals.png";
-import background from "@/assets/background.png";
+import bgMobile from "@/assets/mobile-background.png";
+import bgDesktop from "@/assets/desktop-background.png";
 import whatsapp from "@/assets/whatsapp.webp";
 import phoneMockup from "@/assets/phone-mockup.png";
 import { Sparkles } from "lucide-react";
@@ -19,25 +20,34 @@ const pulseTransition = {
 const Hero = () => {
   return (
     <section className="relative w-full overflow-hidden">
-      {/* Background */}
+      {/* Background (mobile/desktop) */}
       <div className="absolute inset-0 z-0">
+        {/* Mobile */}
         <img
-          src={background}
+          src={bgMobile}
           alt=""
-          className="w-full h-full object-cover object-center"
+          className="block sm:hidden w-full h-full object-cover object-center"
           decoding="async"
         />
+
+        {/* Desktop */}
+        <img
+          src={bgDesktop}
+          alt=""
+          className="hidden sm:block w-full h-full object-cover object-center"
+          decoding="async"
+        />
+
         <div className="absolute inset-0 bg-black/55" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/35 to-black/60" />
       </div>
 
       {/* Conteúdo */}
       <div className="relative z-10 mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-6 pt-10 pb-10 min-h-[100svh] flex items-center">
-
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Coluna texto */}
           <div className="text-center lg:text-left">
-            {/* Logo dentro do fluxo */}
+            {/* Logo */}
             <div className="flex justify-center lg:justify-start mb-6">
               <img
                 src={logo}
@@ -82,7 +92,7 @@ const Hero = () => {
               eletrodomésticos, móveis e muito mais — direto no seu celular.
             </motion.p>
 
-            {/* CTA INLINE (agora aparece no MOBILE e no DESKTOP) */}
+            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -125,7 +135,7 @@ const Hero = () => {
               </motion.div>
             </motion.div>
 
-            {/* Prova social compacta (fica abaixo do botão) */}
+            {/* Prova social */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -148,7 +158,7 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Coluna mockup: somente desktop (se você estiver mantendo) */}
+          {/* Mockup (desktop) */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -165,8 +175,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* REMOVIDO: CTA fixo no mobile (footer) */}
     </section>
   );
 };
