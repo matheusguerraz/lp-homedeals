@@ -78,8 +78,8 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
               className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 leading-tight"
             >
-              Transforme Sua Casa com{" "}
-              <span className="text-[#D2691E]">Ofertas Imbatíveis</span>
+              Ofertas para deixar sua rotina{" "}
+              <span className="text-[#D2691E]">Mais Econômica</span>
             </motion.h1>
 
             <motion.p
@@ -88,8 +88,8 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
               className="text-base sm:text-lg text-white/90 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0"
             >
-              Entre no grupo do WhatsApp e receba ofertas diárias em
-              eletrodomésticos, móveis e muito mais — direto no seu celular.
+              Entre no grupo e receba ofertas diárias
+              direto no seu celular.
             </motion.p>
 
             {/* CTA */}
