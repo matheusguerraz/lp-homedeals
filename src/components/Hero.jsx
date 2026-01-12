@@ -18,6 +18,16 @@ const pulseTransition = {
 };
 
 const Hero = () => {
+  const handleWhatsappClick = () => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "clique_whatsapp", {
+      event_category: "engajamento",
+      event_label: "botao_whatsapp_hero",
+      value: 1,
+    });
+    }
+  };
+
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background (mobile/desktop) */}
@@ -116,12 +126,13 @@ const Hero = () => {
                   size="lg"
                   className="w-full sm:w-auto bg-[#25D366] hover:bg-[#1DA851] text-white font-semibold text-lg px-8 py-6 rounded-full shadow-2xl shadow-[#25D366]/40 transition-transform duration-200 hover:scale-[1.02]"
                 >
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
-                  >
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleWhatsappClick}
+                  className="flex items-center justify-center gap-2"
+                >
                     <img
                       src={whatsapp}
                       alt=""
