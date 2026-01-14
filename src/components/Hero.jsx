@@ -19,12 +19,12 @@ const pulseTransition = {
 
 const Hero = () => {
   const handleWhatsappClick = () => {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", "clique_whatsapp", {
-      event_category: "engajamento",
-      event_label: "botao_whatsapp_hero",
-      value: 1,
-    });
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("trackCustom", "clique_whatsapp", {
+        event_category: "engajamento",
+        event_label: "botao_whatsapp_hero",
+        value: 1,
+      });
     }
   };
 
@@ -123,22 +123,32 @@ const Hero = () => {
                   size="lg"
                   className="w-full sm:w-auto bg-[#25D366] hover:bg-[#1DA851] text-white font-semibold text-lg px-8 py-6 rounded-full shadow-2xl shadow-[#25D366]/40 transition-transform duration-200 hover:scale-[1.02]"
                 >
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleWhatsappClick}
-                  className="flex items-center justify-center gap-2"
-                >
-                    <img
-                      src={whatsapp}
-                      alt=""
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleWhatsappClick}
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <svg
                       className="w-6 h-6"
+<<<<<<< HEAD
                       width="24"
                       height="24"
                       loading="lazy"
                       decoding="async"
                     />
+=======
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12.04 2C6.57 2 2.12 6.45 2.12 11.92c0 1.96.57 3.77 1.55 5.3L2 22l4.95-1.63a9.88 9.88 0 0 0 5.1 1.4h.01c5.47 0 9.92-4.45 9.92-9.92S17.51 2 12.04 2zm0 18.1h-.01a8.19 8.19 0 0 1-4.17-1.14l-.3-.18-2.94.97.98-2.87-.2-.3a8.19 8.19 0 1 1 6.64 3.52zm4.66-6.4c-.25-.12-1.46-.72-1.69-.8-.23-.09-.4-.12-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.39.1-.51.11-.11.25-.29.37-.44.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.12-.56-1.34-.77-1.83-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.42.06-.64.32-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.17 1.69 2.58 4.1 3.62.57.25 1.02.4 1.36.51.57.18 1.1.15 1.52.09.46-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"
+                      />
+                    </svg>
+>>>>>>> origin/codex/optimize-site-performance-issues
                     Entrar no Grupo do WhatsApp
                   </a>
                 </Button>
