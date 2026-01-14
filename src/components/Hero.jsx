@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-homedeals.png";
-import bgMobile from "@/assets/mobile-background.png";
-import bgDesktop from "@/assets/desktop-background.png";
+import logo from "@/assets/logo-homedeals.webp";
+import bgMobile from "@/assets/mobile-background.webp";
+import bgDesktop from "@/assets/desktop-background.webp";
 import whatsapp from "@/assets/whatsapp.webp";
-import phoneMockup from "@/assets/phone-mockup.png";
+import phoneMockup from "@/assets/phone-mockup.webp";
 import { Sparkles } from "lucide-react";
 
 const WHATSAPP_LINK = "https://sndflw.com/i/homedeals";
@@ -32,21 +32,16 @@ const Hero = () => {
     <section className="relative w-full overflow-hidden">
       {/* Background (mobile/desktop) */}
       <div className="absolute inset-0 z-0">
-        {/* Mobile */}
-        <img
-          src={bgMobile}
-          alt=""
-          className="block sm:hidden w-full h-full object-cover object-center"
-          decoding="async"
-        />
-
-        {/* Desktop */}
-        <img
-          src={bgDesktop}
-          alt=""
-          className="hidden sm:block w-full h-full object-cover object-center"
-          decoding="async"
-        />
+        <picture>
+          <source media="(min-width: 640px)" srcSet={bgDesktop} />
+          <img
+            src={bgMobile}
+            alt=""
+            className="w-full h-full object-cover object-center"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
 
         <div className="absolute inset-0 bg-black/55" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/35 to-black/60" />
@@ -63,6 +58,8 @@ const Hero = () => {
                 src={logo}
                 alt="Home Deals Logo"
                 className="w-28 sm:w-32 h-auto"
+                width="196"
+                height="196"
                 loading="eager"
                 decoding="async"
               />
@@ -137,6 +134,8 @@ const Hero = () => {
                       src={whatsapp}
                       alt=""
                       className="w-6 h-6"
+                      width="24"
+                      height="24"
                       loading="lazy"
                       decoding="async"
                     />
