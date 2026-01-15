@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-homedeals.webp";
-import bgMobile from "@/assets/mobile-background.webp";
-import bgDesktop from "@/assets/desktop-background.webp";
+import logo from "@/assets/logo-homedeals.png";
+import bgMobile from "@/assets/mobile-background.png";
+import bgDesktop from "@/assets/desktop-background.png";
 import { BadgePercent } from "lucide-react";
 
 const WHATSAPP_LINK = "https://sndflw.com/i/homedeals";
@@ -82,7 +82,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="mt-10 w-full max-w-xl"
+            className="mt-14 w-full max-w-xl"
           >
             <motion.div
               animate={{
@@ -98,7 +98,7 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white font-semibold text-xl sm:text-2xl px-8 py-8 rounded-xl shadow-2xl shadow-[#25D366]/40 uppercase tracking-wide"
+                className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white font-semibold text-xl sm:text-2xl px-8 py-8 rounded-xl border border-white/80 shadow-2xl shadow-[#25D366]/40 uppercase tracking-wide"
               >
                 <a
                   href={WHATSAPP_LINK}
@@ -133,15 +133,17 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-auto pt-12"
         >
-          <img
-            src={logo}
-            alt="Home Deals Logo"
-            className="w-44 sm:w-52 h-auto"
-            width="196"
-            height="196"
-            loading="eager"
-            decoding="async"
-          />
+          <div className="flex items-center justify-center rounded-full bg-white p-4 shadow-xl sm:p-5">
+            <img
+              src={logo}
+              alt="Home Deals Logo"
+              className="w-36 sm:w-40 h-auto"
+              width="160"
+              height="160"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

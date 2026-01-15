@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Home Deals</title>
-    <link rel="icon" type="image/png" href="src/assets/logo-homedeals.webp" />
+    <link rel="icon" type="image/png" href="src/assets/logo-homedeals.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      />
+    </noscript>
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
     <link rel="preconnect" href="https://www.facebook.com" crossorigin />
-
-    <!-- Meta Pixel -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-      }(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-
-      fbq('init', '3685724848391162');
-      fbq('track', 'PageView');
-    </script>
+    <link rel="preconnect" href="https://mpc-prod-27-s6uit34pua-uk.a.run.app" crossorigin />
   </head>
 
   <body>
@@ -36,31 +36,59 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!1;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      n._script=t;n._scriptParent=s;
-      }(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      const META_PIXEL_ID = '3685724848391162';
+      const META_PIXEL_SRC = 'https://connect.facebook.net/en_US/fbevents.js';
+      let metaPixelQueued = false;
+      let metaPixelInitialized = false;
 
-      fbq('init', '3685724848391162');
-      fbq('track', 'PageView');
+      const initMetaPixel = () => {
+        if (metaPixelInitialized) return;
+        metaPixelInitialized = true;
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!1;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        n._script=t;n._scriptParent=s;
+        }(window, document,'script', META_PIXEL_SRC);
+
+        fbq('init', META_PIXEL_ID);
+        fbq('track', 'PageView');
+      };
 
       const loadMetaPixel = () => {
+        initMetaPixel();
         if (window.fbq && !window.fbq.loaded) {
           window.fbq.loaded = true;
           window.fbq._scriptParent.parentNode.insertBefore(window.fbq._script, window.fbq._scriptParent);
         }
       };
 
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadMetaPixel, { timeout: 2000 });
-      } else {
-        window.addEventListener('load', () => setTimeout(loadMetaPixel, 1));
-      }
+      const queueMetaPixelLoad = () => {
+        if (metaPixelQueued) return;
+        metaPixelQueued = true;
+
+        const run = () => loadMetaPixel();
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(run, { timeout: 4000 });
+        } else {
+          setTimeout(run, 2000);
+        }
+      };
+
+      const handleFirstInteraction = () => {
+        queueMetaPixelLoad();
+        window.removeEventListener('pointerdown', handleFirstInteraction);
+        window.removeEventListener('touchstart', handleFirstInteraction);
+        window.removeEventListener('keydown', handleFirstInteraction);
+        window.removeEventListener('scroll', handleFirstInteraction);
+      };
+
+      window.addEventListener('pointerdown', handleFirstInteraction, { once: true, passive: true });
+      window.addEventListener('touchstart', handleFirstInteraction, { once: true, passive: true });
+      window.addEventListener('keydown', handleFirstInteraction, { once: true });
+      window.addEventListener('scroll', handleFirstInteraction, { once: true, passive: true });
     </script>
   </body>
 </html>
