@@ -55,7 +55,7 @@ const Hero = () => {
 
       {/* Conteúdo */}
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-56px)] max-w-screen-xl flex-col items-center px-4 pb-12 pt-16 text-center">
-        <div className="mt-6 flex w-full flex-col items-center">
+        <div className="mt-14 flex w-full flex-col items-center">
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -131,7 +131,8 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-auto pt-12"
+          className="mt-16 pt-2"
+
         >
           <div className="flex items-center justify-center rounded-full bg-white p-4 shadow-xl sm:p-5">
             <img
