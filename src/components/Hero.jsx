@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-homedeals.webp";
 import bgMobile from "@/assets/mobile-background.webp";
@@ -7,13 +7,6 @@ import bgDesktop from "@/assets/desktop-background.webp";
 import { BadgePercent } from "lucide-react";
 
 const WHATSAPP_LINK = "https://sndflw.com/i/homedeals";
-
-const pulseTransition = {
-  duration: 1.1,
-  repeat: Infinity,
-  repeatType: "loop",
-  ease: "easeInOut",
-};
 
 const Hero = () => {
   const handleWhatsappClick = () => {
@@ -28,6 +21,20 @@ const Hero = () => {
 
   return (
     <section className="relative w-full overflow-hidden">
+      <Helmet>
+        <link
+          rel="preload"
+          as="image"
+          href={bgMobile}
+          media="(max-width: 639px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href={bgDesktop}
+          media="(min-width: 640px)"
+        />
+      </Helmet>
       {/* Background (mobile/desktop) */}
       <div className="absolute inset-0 z-0">
         <picture>
@@ -38,6 +45,7 @@ const Hero = () => {
             className="w-full h-full object-cover object-center"
             decoding="async"
             fetchpriority="high"
+            loading="eager"
           />
         </picture>
 
@@ -56,45 +64,20 @@ const Hero = () => {
       {/* Conteúdo */}
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-56px)] max-w-screen-xl flex-col items-center px-4 pb-12 pt-16 text-center">
         <div className="mt-14 flex w-full flex-col items-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
-          >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
             <span className="text-[#FFD200]">OFERTAS</span> que deixam sua{" "}
             <span className="text-[#FFD200]">ROTINA</span> mais{" "}
             <span className="text-[#FFD200]">ECONÔMICA</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
-            className="mt-8 text-lg sm:text-xl text-white/90 leading-relaxed"
-          >
+          <p className="mt-8 text-lg sm:text-xl text-white/90 leading-relaxed">
             Descontos diários para membros!
             <br />
             Entre agora:
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="mt-14 w-full max-w-xl"
-          >
-            <motion.div
-              animate={{
-                scale: [1, 1.04, 1],
-                filter: [
-                  "drop-shadow(0px 0px 0px rgba(37,211,102,0))",
-                  "drop-shadow(0px 0px 14px rgba(37,211,102,0.75))",
-                  "drop-shadow(0px 0px 0px rgba(37,211,102,0))",
-                ],
-              }}
-              transition={pulseTransition}
-            >
+          <div className="mt-14 w-full max-w-xl">
+            <div className="hero-cta-pulse">
               <Button
                 asChild
                 size="lg"
@@ -123,17 +106,11 @@ const Hero = () => {
                   Entrar no WhatsApp
                 </a>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-16 pt-2"
-
-        >
+        <div className="mt-16 pt-2">
           <div className="flex items-center justify-center rounded-full bg-white p-4 shadow-xl sm:p-5">
             <img
               src={logo}
@@ -141,11 +118,12 @@ const Hero = () => {
               className="w-36 sm:w-40 h-auto"
               width="160"
               height="160"
-              loading="eager"
+              loading="lazy"
               decoding="async"
+              fetchpriority="low"
             />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
