@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-homedeals.webp";
-import bgMobile from "@/assets/mobile-background.png";
-import bgDesktop from "@/assets/desktop-background.png";
+import bgMobile from "@/assets/mobile-background.webp";
+import bgDesktop from "@/assets/desktop-background.webp";
 import { BadgePercent } from "lucide-react";
 
 const WHATSAPP_LINK = "https://sndflw.com/i/homedeals";
