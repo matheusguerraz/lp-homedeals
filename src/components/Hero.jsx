@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-homedeals.png";
+import logo from "@/assets/logo-homedeals.webp";
 import bgMobile from "@/assets/mobile-background.png";
 import bgDesktop from "@/assets/desktop-background.png";
 import { BadgePercent } from "lucide-react";
