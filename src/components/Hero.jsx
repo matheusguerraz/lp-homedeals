@@ -6,7 +6,7 @@ import bgMobile from "@/assets/mobile-background.webp";
 import bgDesktop from "@/assets/desktop-background.webp";
 import { BadgePercent } from "lucide-react";
 
-const WHATSAPP_LINK = "https://sndflw.com/i/homedeals";
+const WHATSAPP_LINK = "https://chat.whatsapp.com/Fp3HCoW8qXrBq3riwAEPuK?mode=gi_t";
 
 const Hero = () => {
   const handleWhatsappClick = () => {
