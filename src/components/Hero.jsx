@@ -103,7 +103,7 @@ const Hero = () => {
                       />
                     </svg>
                   </span>
-                  Entrar no WhatsApp
+                  GRUPO COM VAGAS
                 </a>
               </Button>
             </div>
